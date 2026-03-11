@@ -163,7 +163,9 @@ export function TagsList({
 												href={`/${owner}/${repo}/releases/${tag.name}`}
 												className="text-sm font-mono font-medium text-foreground truncate hover:underline hover:cursor-pointer"
 											>
-												{tag.name}
+												{
+													tag.name
+												}
 											</Link>
 											{release &&
 												!release.draft && (
@@ -176,9 +178,11 @@ export function TagsList({
 														) : (
 															<span className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 max-w-50 md:max-w-none">
 																<Rocket className="w-2.5 h-2.5 shrink-0" />
-																<span className="truncate md:truncate-none">{release.name || release.tag_name}</span>
+																<span className="truncate md:truncate-none">
+																	{release.name ||
+																		release.tag_name}
+																</span>
 															</span>
-
 														)}
 													</>
 												)}

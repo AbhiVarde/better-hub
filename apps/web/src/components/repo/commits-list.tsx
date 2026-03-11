@@ -48,12 +48,12 @@ type Commit = {
 		} | null;
 	};
 	author:
-	| {
-		login: string;
-		avatar_url: string;
-	}
-	| Record<string, never>
-	| null;
+		| {
+				login: string;
+				avatar_url: string;
+		  }
+		| Record<string, never>
+		| null;
 	html_url: string;
 };
 
@@ -72,10 +72,10 @@ function groupByDate(commits: Commit[]) {
 		const date = commit.commit.author?.date;
 		const key = date
 			? new Date(date).toLocaleDateString("en-US", {
-				month: "long",
-				day: "numeric",
-				year: "numeric",
-			})
+					month: "long",
+					day: "numeric",
+					year: "numeric",
+				})
 			: "Unknown date";
 		if (!groups[key]) groups[key] = [];
 		groups[key].push(commit);
@@ -178,7 +178,7 @@ function BranchPicker({
 										className={cn(
 											"w-full text-left px-3 py-1.5 text-xs font-mono hover:bg-muted/60 dark:hover:bg-white/3 transition-colors cursor-pointer flex items-center gap-2",
 											isActive &&
-											"bg-muted/30",
+												"bg-muted/30",
 										)}
 									>
 										<span className="w-3.5 shrink-0 flex items-center justify-center">
@@ -572,7 +572,7 @@ function CommitDetailSheet({
 			>
 				<ResizeHandle
 					onResize={onResize}
-					onDragStart={() => { }}
+					onDragStart={() => {}}
 					onDragEnd={onResizeEnd}
 					onDoubleClick={onResetWidth}
 					className="absolute left-0 inset-y-0 z-20"
@@ -862,8 +862,8 @@ export function CommitsList({ owner, repo, commits, defaultBranch, branches }: C
 	const hasDateFilter = since !== "" || until !== "";
 	const filtered = search
 		? displayedCommits.filter((c) =>
-			c.commit.message.toLowerCase().includes(search.toLowerCase()),
-		)
+				c.commit.message.toLowerCase().includes(search.toLowerCase()),
+			)
 		: displayedCommits;
 	const grouped = groupByDate(filtered);
 
